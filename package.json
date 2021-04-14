@@ -1,0 +1,29 @@
+{
+  "name": "mongobudget",
+  "version": "1.0.0",
+  "description": "node-js app with express-js framework, mongo-db, mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attila5287/mongobudget.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/attila5287/mongobudget/issues"
+  },
+  "homepage": "https://github.com/attila5287/mongobudget#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.0",
+    "express-paginate": "^1.0.2",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.3"
+  }
+}
