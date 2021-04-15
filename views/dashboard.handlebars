@@ -1,0 +1,43 @@
+{{#each demo as |t|  }}
+{{ t.name }}
+<br>
+{{ t.value }}
+<br>
+{{ t.date }}
+{{/each}}
+<h2>
+    <i class="fas fa-table" aria-hidden="true"></i>
+    Transaction Details
+  <button id="coll_tabl_button" class="btn btn-primary btn-lg px-5 rounded-xl" type="button" data-toggle="collapse" data-target="#tbl"
+    aria-expanded="false" aria-controls="tbl">
+    <i id="coll_tabl_icon" class="fas fa-chevron-down pr-2" aria-hidden="true"></i>
+    Show/Hide
+  </button>
+</h2>
+
+<div class="collapse show" id="tbl">
+  <div class="table-responsive">
+    <table class="table table-striped table-sm table-hover table-inverse table-borderless">
+      <thead>
+        <tr>
+          {{#each keys as |k|}}
+          <th>
+            {{k}}
+          </th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each data as |d|}}
+        <tr>
+          <td>{{ d.name}} </td>
+          <td>{{ d.value}} </td>
+          <td>{{format_date d.date}} </td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
