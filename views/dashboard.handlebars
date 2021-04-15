@@ -1,19 +1,19 @@
-{{#each demo as |t|  }}
-{{ t.name }}
-<br>
-{{ t.value }}
-<br>
-{{ t.date }}
-{{/each}}
-<h2>
-    <i class="fas fa-table" aria-hidden="true"></i>
-    Transaction Details
-  <button id="coll_tabl_button" class="btn btn-primary btn-lg px-5 rounded-xl" type="button" data-toggle="collapse" data-target="#tbl"
-    aria-expanded="false" aria-controls="tbl">
-    <i id="coll_tabl_icon" class="fas fa-chevron-down pr-2" aria-hidden="true"></i>
-    Show/Hide
-  </button>
-</h2>
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-success">
+            <h2 class="text-ubu text-success">
+              <i class="fas fa-table"></i>
+              Table</h2>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button id="coll_tabl_button" class="btn btn-outline-success px-5 rounded-xl" type="button" data-toggle="collapse" data-target="#tbl"
+                  aria-expanded="false" aria-controls="tbl">
+                  <i id="coll_tabl_icon" class="fas fa-chevron-down pr-2" aria-hidden="true"></i>
+                  Show/Hide
+                </button>
+              </div>
+            </div>
+          </div>
+
 
 <div class="collapse show" id="tbl">
   <div class="table-responsive">
