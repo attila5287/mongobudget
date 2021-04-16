@@ -12,10 +12,14 @@ const transactionSchema = new Schema({
     type: Number,
     required: "Enter an amount"
   },
+  type: {
+    type: String,
+    default: "in"
+  },
   date: {
     type: Date,
     default: Date.now
-  }
+  },
 });
 
 const Transaction = mongoose.model("Transaction", transactionSchema);

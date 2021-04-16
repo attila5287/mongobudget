@@ -44,6 +44,11 @@
           placeholder="Transaction Name">
         <input class="form-control form-control-dark w-100 ml-1" name="value" type="text"
           placeholder="Transaction Value ($)">
+          <select class="form-control form-control-dark text-secondary  ml-1" name="type">
+          <option selected hidden> Transaction Type</option>
+          <option>in</option>
+          <option>out</option>
+        </select>
         <ul class="navbar-nav px-0">
           <li class="nav-item text-nowrap">
             <input class="btn btn-outline-success btn-block btn-lg" type="submit" value="Add">
@@ -51,14 +56,13 @@
         </ul>
       </nav>
     </form>
-
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column text-ubu">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="/">
                   <i class="fas fa-home text-2xl fa-fw"></i>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
@@ -78,16 +82,16 @@
               </li>
             </ul>
             <ul class="nav flex-column text-ubu p-4">
-              <p class="my-0 text-center text-muted">powered by...</p>
+              <p class="my-0 text-center text-muted font-weight-bold opac-50 font-italic">powered by...</p>
               <h1
                 class="title animated infinite heartBeat mr-4 fab fa-node text-success text-center mb-0">
               </h1>
               <p class="mt-0 border-bottom border-secondary"></p>
               <p class="animated bounceInLeft">
                 <i class="fa fa-cog text-xl fa-spin" aria-hidden="true"></i>
-                A node-js full-stack app that tracks transactions and stores them in database</p>
+                A node-js full-stack app that tracks transactions and stores them in database.</p>
               <p class="my-3 animated zoomIn delay-1s text-muted font-italic"> <i
-                  class="mr-0 fab fa-npm text-lg fa-fw text-danger"></i> packages and libraries:</p>
+                  class="mr-0 fab fa-npm text-2xl fa-fw text-danger"></i> packages and libraries:</p>
               <p class="my-3 animated bounceInLeft delay-1s"> <i
                   class="mr-4 fas fa-database text-lg fa-fw"></i> mongo DB</p>
               <p class="my-3 animated bounceInLeft delay-2s"> <i
