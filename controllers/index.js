@@ -11,4 +11,8 @@ router.get('/', (req, res) => {
     res.render( 'dashboard', { data : demo , keys : Object.keys(demo[0]) } );
 });
 
+router.post('/new', (req, res) => {
+    res.json( req.body );
+    
+});
 module.exports = router;

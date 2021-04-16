@@ -8,139 +8,96 @@
       content="budget tracker app with mongo DB, object storage, express, express-handlebars and bootstrap dashboard example" />
     <meta name="author" content="attila5287">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>Mongo Budget</title>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
-
     <!-- Bootstrap core CSS -->
     <link href="/css/slate/bootstrap.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
   </head>
 
   <body class="mb-5 pb-5">
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="http://mongobudget.herokuapp.com">
-      <span class="text-success text-lg text-ubu mr-0">
-      MongoBudget
-      </span>
+    <form action="/new" method="post">
+      <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="http://mongobudget.herokuapp.com">
+          <span class="text-success text-lg text-ubu mr-0">
+            MongoBudget
+          </span>
 
-      <span class="fa-stack fa-2x ml-0">
-        <i class="fab fa-themeco fa-stack-2x text-success"></i>
-        <i class="fas fa-dollar-sign fa-stack-2x text-dark"></i>
-    </span>
-      </a>
-      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
-        data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search"
-        aria-label="Search">
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search"
-        aria-label="Search">
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
-        </li>
-      </ul>
-    </nav>
+          <span class="fa-stack fa-2x ml-0">
+            <i class="fab fa-themeco fa-stack-2x text-success"></i>
+            <i class="fas fa-dollar-sign fa-stack-2x text-dark"></i>
+          </span>
+        </a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
+          data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100 ml-1" name="name" type="text"
+          placeholder="Transaction Name">
+        <input class="form-control form-control-dark w-100 ml-1" name="value" type="text"
+          placeholder="Transaction Value ($)">
+        <ul class="navbar-nav px-0">
+          <li class="nav-item text-nowrap">
+            <input class="btn btn-outline-success btn-block btn-lg" type="submit" value="Add">
+          </li>
+        </ul>
+      </nav>
+    </form>
 
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
           <div class="sidebar-sticky pt-3">
-            <ul class="nav flex-column">
+            <ul class="nav flex-column text-ubu">
               <li class="nav-item">
                 <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
+                  <i class="fas fa-home text-2xl fa-fw"></i>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Orders
+                <a class="nav-link text-secondary" href="https://github.com/attila5287/mongobudget">
+                  <i class="fab fa-github text-2xl fa-fw"></i>
+                  Github
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Products
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="users"></span>
-                  Customers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
+                <a class="nav-link text-secondary" href="https://attila5287.github.io/">
+                  <img src="https://avatars.githubusercontent.com/u/42498753?s=48&v=4"
+                    class="img-mini bg-transparent rounded-up" alt="dev-img">
+                  Developer
                 </a>
               </li>
             </ul>
+            <ul class="nav flex-column text-ubu p-4">
+              <p class="my-0 text-center text-muted">powered by...</p>
+              <h1
+                class="title animated infinite heartBeat mr-4 fab fa-node text-success text-center mb-0">
+              </h1>
+              <p class="mt-0 border-bottom border-secondary"></p>
+              <p class="animated bounceInLeft">
+                <i class="fa fa-cog text-xl fa-spin" aria-hidden="true"></i>
+                A node-js full-stack app that tracks transactions and stores them in database</p>
+              <p class="my-3 animated zoomIn delay-1s text-muted font-italic"> <i
+                  class="mr-0 fab fa-npm text-lg fa-fw text-danger"></i> packages and libraries:</p>
+              <p class="my-3 animated bounceInLeft delay-1s"> <i
+                  class="mr-4 fas fa-database text-lg fa-fw"></i> mongo DB</p>
+              <p class="my-3 animated bounceInLeft delay-2s"> <i
+                  class="mr-4 fas fa-server text-lg fa-fw"></i>express-js framework </p>
+              <p class="my-3 animated bounceInLeft delay-3s"> <i
+                  class="mr-4 fab fa-html5 text-lg fa-fw"></i>express handlebars </p>
+              <p class="my-3 animated bounceInLeft delay-4s"> <i
+                  class="mr-4 fab fa-css3 text-lg fa-fw"></i>bootstrap css </p>
 
-            <h6
-              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
-              <a class="d-flex align-items-center text-muted" href="#"
-                aria-label="Add a new report">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
+
             </ul>
           </div>
         </nav>
@@ -151,21 +108,23 @@
             <h2 class="text-ubu text-success">
               <i class="fas fa-tachometer-alt"></i>
               Dashboard</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                  <button id="coll_chrt_button" class="btn btn-outline-success px-5 rounded-xl"
+                    type="button" data-toggle="collapse" data-target="#chart_div"
+                    aria-expanded="false" aria-controls="chart_div">
+                    <i id="coll_chrt_icon" class="fas fa-chevron-down pr-2" aria-hidden="true"></i>
+                    Show/Hide
+                  </button>
+                </div>
               </div>
-              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-              </button>
-            </div>
+          </div>
+          <div id="chart_div" class="collapse show">
+            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
           </div>
 
-          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-        {{{body}}}
+          {{{body}}}
 
         </main>
       </div>
@@ -173,10 +132,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"></script>
-    <script>
-      window.jQuery || document.write(
-        '<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>' )
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js">
@@ -186,23 +141,38 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="/js/dashboard.js"></script>
-<script>
-  let coll_tabl_collapsed = false;
-  $( '#coll_tabl_button' )
-		.on( "click", () => {
-			if ( coll_tabl_collapsed ) {
-				coll_tabl_collapsed = false;
-				$("#coll_tabl_icon").removeClass("fa-chevron-up");
-				$("#coll_tabl_icon").addClass("fa-chevron-down");
-			}
-			else {
-				coll_tabl_collapsed = true;
-				$("#coll_tabl_icon").removeClass("fa-chevron-down");
-				$("#coll_tabl_icon").addClass("fa-chevron-up");
-			}
+    <script>
+      let coll_chrt_collapsed = false;
+      $( '#coll_chrt_button' )
+        .on( "click", () => {
+          if ( coll_chrt_collapsed ) {
+            coll_chrt_collapsed = false;
+            $( "#coll_chrt_icon" ).removeClass( "fa-chevron-up" );
+            $( "#coll_chrt_icon" ).addClass( "fa-chevron-down" );
+          } else {
+            coll_chrt_collapsed = true;
+            $( "#coll_chrt_icon" ).removeClass( "fa-chevron-down" );
+            $( "#coll_chrt_icon" ).addClass( "fa-chevron-up" );
+          }
 
 
-	} );
-</script>
+        } );
+      let coll_tabl_collapsed = false;
+      $( '#coll_tabl_button' )
+        .on( "click", () => {
+          if ( coll_tabl_collapsed ) {
+            coll_tabl_collapsed = false;
+            $( "#coll_tabl_icon" ).removeClass( "fa-chevron-up" );
+            $( "#coll_tabl_icon" ).addClass( "fa-chevron-down" );
+          } else {
+            coll_tabl_collapsed = true;
+            $( "#coll_tabl_icon" ).removeClass( "fa-chevron-down" );
+            $( "#coll_tabl_icon" ).addClass( "fa-chevron-up" );
+          }
+
+
+        } );
+    </script>
   </body>
+
 </html>

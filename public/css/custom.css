@@ -100,7 +100,7 @@ a.post-title:focus {
 }
 
 .rounded-up {
-  border-radius: 1.5rem;
+   border-radius: 50%;
 }
 
 .border-med {
@@ -150,10 +150,9 @@ a.post-title:focus {
   font-size: 0.85rem;
 }
 
-.img-comment {
-  max-width: 3rem;
-  max-height: 3rem;
-  border-radius: 1rem;
+.img-mini {
+  max-width:  2.50rem;
+  max-height: 2.50rem;
 }
 
 .img-author {

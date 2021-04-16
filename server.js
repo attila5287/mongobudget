@@ -20,4 +20,4 @@ app.use(routes);
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.listen(PORT, () => console.log('\n---------------\n>> Now listening \n---------------'));
+app.listen(PORT, () => console.log('\n---------------\n>> Now listening \n---------------\n PORT : '+ PORT));
