@@ -1,5 +1,5 @@
 const router = require( 'express' ).Router();
-const Transaction = require( "../models/transaction.js" );
+const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
 router.get( '/', async ( req, res ) => {
