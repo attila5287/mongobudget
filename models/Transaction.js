@@ -3,22 +3,24 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const transactionSchema = new Schema({
-  name: {
+  description: {
     type: String,
     trim: true,
-    required: "Enter a name for transaction"
+    required: "Enter a name for transaction",
+    default: "New Transaction",
   },
-  value: {
+  amount: {
     type: Number,
-    required: "Enter an amount"
+    required: "Enter an amount",
+    default: "0",
   },
-  type: {
+  category: {
     type: String,
-    default: "in"
+    default: "out",
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 

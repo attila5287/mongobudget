@@ -1,18 +1,55 @@
 const router = require( 'express' ).Router();
-// const path = require( 'path' );
+const Transaction = require( "../models/transaction.js" );
+const demo = require( '../demo' );
 
-// const apiRoutes = require( './api' );
-// router.use( '/api', apiRoutes );
+router.get( '/', async ( req, res ) => {
 
-const  Transaction  = require( '../models' );
-const  demo  = require( '../demo' );
-
-router.get('/', (req, res) => {
-    res.render( 'dashboard', { data : demo , keys : Object.keys(demo[0]) } );
-});
-
-router.post('/new', (req, res) => {
-    res.json( req.body );
+  // const mods = await Transaction
+  //   .find( {} )
+  //   .sort( {
+  //     date: -1
+  //   } )
+  //   .catch( err => res.status( 400 ).json( err ) );
+  
     
-});
+  const icons = {
+    in: 'arrow-up text-success',
+    out: 'arrow-down text-danger'
+  };
+  // const all = mods.map( ( d ) => {return { ...d.toJSON(), icon: icons[d.category] } } );
+  const all = demo.map( ( d ) => {return { ...d, icon: icons[d.category] } } );
+  
+  res.render( 'dashboard', { data: all, icons:icons } );
+} );
+
+router.get( "/api/transaction/seed", async ( req, res ) => {
+  const bulk = await Transaction
+    .insertMany( demo )
+    .catch( err => res.status( 400 ).json( err ) );
+
+  res.json( bulk );
+} );
+
+router.get( "/api/transaction", ( req, res ) => {
+  Transaction.find( {} )
+    .sort( {
+      date: -1
+    } )
+    .then( dbTransaction => {
+      res.json( dbTransaction );
+    } )
+    .catch( err => {
+      res.status( 400 ).json( err );
+    } );
+} );
+
+router.post( "/api/transaction", async ( req, res ) => {
+  const t = await Transaction
+    .create( req.body )
+    .catch( e => console.log( e ) );
+
+  console.log( 't :>> ', t );
+  res.json( t );
+
+} );
 module.exports = router;

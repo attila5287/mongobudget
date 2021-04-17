@@ -23,7 +23,7 @@
   </head>
 
   <body class="mb-5 pb-5">
-    <form action="/new" method="post">
+    <form action="/api/transaction" method="post">
       <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="http://mongobudget.herokuapp.com">
           <span class="text-success text-lg text-ubu mr-0">
@@ -40,14 +40,17 @@
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100 ml-1" name="name" type="text"
-          placeholder="Transaction Name">
-        <input class="form-control form-control-dark w-100 ml-1" name="value" type="text"
-          placeholder="Transaction Value ($)">
-          <select class="form-control form-control-dark text-secondary  ml-1" name="type">
-          <option selected hidden> Transaction Type</option>
+        
+        <input class="form-control form-control-dark form-control-lg text-xl w-100 ml-1" name="description" type="text"
+          placeholder="Description">
+        
+        <input class="form-control form-control-dark form-control-lg text-xl w-100 ml-1" name="amount" type="text"
+          placeholder="Amount">
+
+        <select class="form-control form-control-dark form-control-lg text-xl text-secondary ml-1" name="category">
+          <option selected hidden> Category </option>
           <option>in</option>
-          <option>out</option>
+          <option>ou</option>
         </select>
         <ul class="navbar-nav px-0">
           <li class="nav-item text-nowrap">
