@@ -20,14 +20,6 @@ app.use( express.urlencoded( {
 
 const MongoClient = require('mongodb').MongoClient;
 
-const uri = "mongodb+srv://test1234:test1234@onetimeonly.bc2oj.mongodb.net/db?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-const collection = client.db("db").collection("budget");
-  // perform actions on the collection object
-  client.close();
-});
-
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 app.use( routes );
@@ -37,7 +29,7 @@ app.set( 'view engine', 'handlebars' );
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useNewUrlParser: true,
-  useFindAndModify: false,
+  useFindAndModify: true,
   useUnifiedTopology: true
 } );
 
