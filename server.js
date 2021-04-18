@@ -18,6 +18,16 @@ app.use( express.urlencoded( {
   extended: true
 } ) );
 
+const MongoClient = require('mongodb').MongoClient;
+
+const uri = "mongodb+srv://test1234:<password>@onetimeonly.bc2oj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 app.use( routes );
