@@ -23,7 +23,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://test1234:<password>@onetimeonly.bc2oj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-const collection = client.db("test").collection("devices");
+const collection = client.db("db").collection("budget");
   // perform actions on the collection object
   client.close();
 });
