@@ -18,8 +18,6 @@ app.use( express.urlencoded( {
   extended: true
 } ) );
 
-const MongoClient = require('mongodb').MongoClient;
-
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 app.use( routes );
@@ -28,9 +26,10 @@ app.engine( 'handlebars', hbs.engine );
 app.set( 'view engine', 'handlebars' );
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/budget", {
-  useNewUrlParser: true,
-  useFindAndModify: true,
-  useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
 } );
 
 app.listen( PORT, () => console.log( '\n>> Now listening at PORT : ' + PORT ) );
