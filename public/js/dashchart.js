@@ -10,8 +10,14 @@ function populateChart(transactions) {
   });
 
   // create incremental amounts for chart
-  const data = reversed.map(t => {
-    sum += parseInt(t.amount);
+  const data = reversed.map( t => {
+    if (t.category == 'in') {
+      sum += parseInt(t.amount);
+      
+    } else {
+      
+      sum -= parseInt(t.amount);
+    }
     return sum;
   });
   let myChart = null;
