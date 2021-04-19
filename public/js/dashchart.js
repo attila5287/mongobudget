@@ -1,4 +1,4 @@
-function populateChart() {
+function populateChart(transactions) {
   // copy array and reverse it
   const reversed = transactions.slice().reverse();
   let sum = 0;
@@ -9,12 +9,13 @@ function populateChart() {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
-  // create incremental values for chart
+  // create incremental amounts for chart
   const data = reversed.map(t => {
-    sum += parseInt(t.value);
+    sum += parseInt(t.amount);
     return sum;
   });
-
+  let myChart = null;
+  
   // remove old chart if it exists
   if (myChart) {
     myChart.destroy();
@@ -37,3 +38,8 @@ function populateChart() {
     }
   });
 }
+
+
+fetch('/api/transaction')
+  .then(response => response.json())
+  .then(data => populateChart(data));

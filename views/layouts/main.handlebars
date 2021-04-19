@@ -25,9 +25,10 @@
     <!-- Custom styles for this template -->
   </head>
 
-  <body class="mb-5 pb-5">
+  <body class="my-5 py-4">
+    
     <form action="/api/transaction" method="post">
-      <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="http://mongobudget.herokuapp.com">
           <span class="text-success text-lg text-ubu mr-0">
             MongoBudget
@@ -63,8 +64,10 @@
         </ul>
       </nav>
     </form>
+    
     <div class="container-fluid">
       <div class="row">
+        
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column text-ubu">
@@ -131,15 +134,17 @@
               </div>
           </div>
           <div id="chart_div" class="collapse show">
-            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+            <canvas class="my-4 w-100" id="my-chart" width="900" height="380"></canvas>
 
           </div>
 
           {{{body}}}
 
         </main>
+
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"></script>
@@ -152,38 +157,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="/js/dashboard.js"></script>
-    <script>
-      let coll_chrt_collapsed = false;
-      $( '#coll_chrt_button' )
-        .on( "click", () => {
-          if ( coll_chrt_collapsed ) {
-            coll_chrt_collapsed = false;
-            $( "#coll_chrt_icon" ).removeClass( "fa-chevron-up" );
-            $( "#coll_chrt_icon" ).addClass( "fa-chevron-down" );
-          } else {
-            coll_chrt_collapsed = true;
-            $( "#coll_chrt_icon" ).removeClass( "fa-chevron-down" );
-            $( "#coll_chrt_icon" ).addClass( "fa-chevron-up" );
-          }
 
-
-        } );
-      let coll_tabl_collapsed = false;
-      $( '#coll_tabl_button' )
-        .on( "click", () => {
-          if ( coll_tabl_collapsed ) {
-            coll_tabl_collapsed = false;
-            $( "#coll_tabl_icon" ).removeClass( "fa-chevron-up" );
-            $( "#coll_tabl_icon" ).addClass( "fa-chevron-down" );
-          } else {
-            coll_tabl_collapsed = true;
-            $( "#coll_tabl_icon" ).removeClass( "fa-chevron-down" );
-            $( "#coll_tabl_icon" ).addClass( "fa-chevron-up" );
-          }
-
-
-        } );
-    </script>
+    <script src="/js/collapse.js"></script>
+    <script src="/js/dashchart.js"></script>
   </body>
 
 </html>
