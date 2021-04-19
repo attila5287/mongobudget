@@ -69,9 +69,11 @@ router.post( "/api/transaction", async ( req, res ) => {
 
 router.get( "/api/transaction", async ( req, res ) => {
   const mods = await Transaction.find( {} )
-    .sort( {date: -1} ).catch( e => console.log( e ) );
+    .sort( { date: -1 } )
+    .catch( e => console.log( '\n' + e ) )
+    ;
     
-    if (mods.length) {
+  if ( mods ) {
       res.json( mods );
     } else {
       res.json(demo)
