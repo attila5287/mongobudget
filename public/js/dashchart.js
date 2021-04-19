@@ -31,7 +31,8 @@ function populateChart(transactions) {
         {
           label: "Total Over Time",
           fill: true,
-          backgroundColor: "#6666ff",
+          // backgroundColor: "#6666ff",
+          backgroundColor: "#62c462",
           data
         }
       ]
