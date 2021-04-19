@@ -16,7 +16,7 @@ router.get( '/', async ( req, res ) => {
     in: 'arrow-up text-success',
     out: 'arrow-down text-danger'
   };
-  const all = mods.map( ( d ) => {return { ...d.toJSON(), icon: icons[d.category] } } );
+  const all = mods.map( ( d ) => {return { ...d.toJSON(), icon: icons[d.category] } } ).catch( e => console.log(e));
   // const all = demo.map( ( d ) => {return { ...d, icon: icons[d.category] } } );
   
   res.render( 'dashboard', { data: all, icons:icons } );
