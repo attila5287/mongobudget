@@ -3,7 +3,12 @@ const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
 router.get( '/', async ( req, res ) => {
-
+  let all = null;
+  
+  const icons = {
+    in: 'arrow-up text-success',
+    out: 'arrow-down text-danger'
+  };
   const mods = await Transaction
     .find( {} )
     .sort( {
@@ -11,19 +16,20 @@ router.get( '/', async ( req, res ) => {
     } )
     .catch( e => console.log(e));
 
-
-  const icons = {
-    in: 'arrow-up text-success',
-    out: 'arrow-down text-danger'
-  };
-    const all = mods.map( ( d ) => {
+  if (mods.length) {
+    all = mods.map( ( d ) => {
       return {
         ...d.toJSON(),
         icon: icons[ d.category ]
       }
     } );
-  // const all = demo.map( ( d ) => {return { ...d, icon: icons[d.category] } } );
-
+  
+  } else {
+  
+    all = demo.map( ( d ) => { return { ...d, icon: icons[ d.category ] } } );
+    
+  }
+  
   res.render( 'dashboard', {
     data: all,
     icons: icons
@@ -40,30 +46,37 @@ router.get( "/api/transaction/seed", async ( req, res ) => {
     res.json( msg );
 
   } else {
+    
     const bulk = await Transaction
       .insertMany( demo )
-      .catch( err => res.status( 400 ).json( err ) );
+      .catch( e => console.log(e) );
   
     res.redirect( '/' );
     
   }
 } );
 
-router.get( "/api/transaction", async ( req, res ) => {
-  const all  = await Transaction.find( {} )
-    .sort( {date: -1} ).catch( e => console.log( e ) );
-  
-    res.json( all );
-} );
 
 router.post( "/api/transaction", async ( req, res ) => {
   const t = await Transaction
-    .create( req.body )
-    .catch( e => console.log( e ) );
-
+  .create( req.body )
+  .catch( e => console.log( e ) );
+  
   console.log( 't :>> ', t );
   res.json( t );
+  
+} );
 
+router.get( "/api/transaction", async ( req, res ) => {
+  const mods = await Transaction.find( {} )
+    .sort( {date: -1} ).catch( e => console.log( e ) );
+    
+    if (mods.length) {
+      res.json( mods );
+    } else {
+      res.json(demo)
+    }
+    
 } );
 
 module.exports = router;
