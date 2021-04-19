@@ -3,13 +3,12 @@ const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
 router.get( '/', async ( req, res ) => {
-
+try {
   const mods = await Transaction
     .find( {} )
     .sort( {
       date: -1
-    } )
-    .catch( err => res.status( 400 ).json( err ) );
+    } );
 
 
   const icons = {
@@ -22,8 +21,10 @@ router.get( '/', async ( req, res ) => {
       icon: icons[ d.category ]
     }
   } );
-  // const all = demo.map( ( d ) => {return { ...d, icon: icons[d.category] } } );
-
+  
+} catch (error) {
+  res.status( 400 ).json( err )
+}
   res.render( 'dashboard', {
     data: all,
     icons: icons
