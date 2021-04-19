@@ -16,6 +16,7 @@ const transactionSchema = new Schema({
   },
   category: {
     type: String,
+    required: "Select a category",
     default: "out",
   },
   date: {
