@@ -15,7 +15,7 @@ function populateChart(transactions) {
     return sum;
   });
   let myChart = null;
-  
+
   // remove old chart if it exists
   if (myChart) {
     myChart.destroy();
@@ -39,7 +39,7 @@ function populateChart(transactions) {
   });
 }
 
-
-fetch('/api/transaction')
+// ref: mdn docs
+fetch('/api/transaction/demo')
   .then(response => response.json())
   .then(data => populateChart(data));

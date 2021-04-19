@@ -37,7 +37,7 @@ router.get( '/', async ( req, res ) => {
 } );
 
 router.get( "/api/transaction/seed", async ( req, res ) => {
-  const existing = await Transaction.find( {} );
+  const existing = await Transaction.find( {} ).catch( e => console.log( e ) );
 
   if ( existing.length ) {
     const msg = {
@@ -68,15 +68,20 @@ router.post( "/api/transaction", async ( req, res ) => {
 } );
 
 router.get( "/api/transaction", async ( req, res ) => {
-  try {
-      const mods = await Transaction.find( {} )
-        .sort( { date: -1 } )
-        .catch( e => console.log( '\n' + e ) )
-        ;
+  const mods = await Transaction.find( {} )
+    .sort( {date: -1} ).catch( e => console.log( e ) );
+    
+  res.json( mods );
+    
+} );
+
+router.get( "/api/transaction/demo", async ( req, res ) => {
+  const mods = await Transaction.find( {} )
+    .sort( {date: -1} ).catch( e => console.log( e ) );
+    
+    if (mods.length) {
       res.json( mods );
-      
-    } catch (error) {
-      console.log(error);
+    } else {
       res.json(demo)
     }
     
