@@ -9,7 +9,7 @@ router.get( '/', async ( req, res ) => {
     .sort( {
       date: -1
     } )
-    .catch( err => res.status( 400 ).json( err ) );
+    .catch( e => console.log(e));
 
 
   const icons = {
