@@ -92,16 +92,7 @@ router.get( "/api/transaction", async ( req, res ) => {
 } );
 
 router.get( "/api/transaction/demo", async ( req, res ) => {
-  const mods = await Transaction.find( {} )
-    .sort( {
-      date: -1
-    } ).catch( e => console.log( e ) );
-
-  if ( mods.length ) {
-    res.json( mods );
-  } else {
-    res.json( demo )
-  }
+  res.json( demo )
 
 } );
 
