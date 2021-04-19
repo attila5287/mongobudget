@@ -26,7 +26,7 @@ app.engine( 'handlebars', hbs.engine );
 app.set( 'view engine', 'handlebars' );
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/budget", {
-    useNewUrlParser: true,
+    useNewUrlParser: true,  
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
