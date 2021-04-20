@@ -190,3 +190,7 @@ a.post-title:focus {
 .signup-form {
   margin: auto;
 }
+
+.uplabel {
+  font-size: 1.25rem;
+}

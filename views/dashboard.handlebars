@@ -1,30 +1,72 @@
-          <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-success">
-            <h2 class="text-ubu text-success">
-              <i class="fas fa-table"></i>
-              Table</h2>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button id="coll_tabl_button" class="btn btn-outline-success px-5 rounded-xl" type="button" data-toggle="collapse" data-target="#tbl"
-                  aria-expanded="false" aria-controls="tbl">
-                  <i id="coll_tabl_icon" class="fas fa-chevron-down pr-2" aria-hidden="true"></i>
-                  Show/Hide
-                </button>
-              </div>
-            </div>
-          </div>
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-success">
+  <h2 class="text-ubu text-success">
+    <i class="fas fa-table"></i>
+    Table</h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button id="coll_tabl_button" class="btn btn-outline-success px-5 rounded-xl" type="button"
+        data-toggle="collapse" data-target="#tbl" aria-expanded="false" aria-controls="tbl">
+        <i id="coll_tabl_icon" class="fas fa-chevron-down pr-2" aria-hidden="true"></i>
+        Show/Hide
+      </button>
+    </div>
+  </div>
+</div>
 
+{{#each data as |d|}}
+<form class="mini collapse" id="row{{d._id}}" action="/api/transaction/update/{{d._id}}"
+  method="post">
+  <p class="text-muted text-center font-italic mb-0 mt-1">
+    Transaction Id: {{d._id}}
+    <span class="float-right">
+    <a href="/api/transaction/delete/{{d._id}}" class="btn btn-outline-danger btn-sm my-0">Delete</a>
+    </span>
+
+  </p>
+  <h2 class="text-info border-bottom border-info pb-2">
+    <i class="fas fa-edit"></i>
+    Update Transaction
+  </h2>
+
+
+  <div class="form-group row align-items-center">
+    <label class="col-3 uplabel" for="description">Description</label>
+    <input type="text" class="col-8 form-control form-control-dark text-secondary" name="description"
+      value="{{d.description}}">
+  </div>
+  <div class="form-group row d-none">
+    <label class="col-3 uplabel" for="amount">Amount</label>
+    <input type="text" class="col-8 form-control form-control-dark text-secondary" name="amount" value="{{d.amount}}">
+  </div>
+  <div class="form-group row align-items-center d-none">
+    <label class="col-3 uplabel" for="date">Date</label>
+    <input type="text" class="col-8 form-control form-control-dark text-secondary" name="date" value="{{d.date}}">
+  </div>
+
+  <div class="form-group row align-items-center">
+    <label class="col-3 uplabel" for="category">Category</label>
+    <select class="col-8 form-control-dark custom-select text-secondary" name="category">
+      <option selected>{{d.category}}</option>
+      <option>in</option>
+      <option>out</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block rounded-xl">Submit</button>
+</form>
+{{/each}}
 
 <div class="collapse show" id="tbl">
   <div class="table-responsive">
     <table class="table table-striped table-sm table-hover table-inverse table-borderless">
-      <thead class="text-lg">
+      <thead class="text-lg border-bottom border-info text-info">
         <tr>
           <th> +/- </th>
           <th> Description</th>
           <th> Amount</th>
           <th> Category</th>
           <th> Date</th>
+          <th> Update</th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +79,12 @@
           <td class="font-weight-bold">{{format_amount d.amount}} </td>
           <td>{{ d.category}} </td>
           <td>{{format_date d.date}} </td>
+          <td>
+            <button class="btn btn-primary btn-sm my-0" type="button" data-toggle="collapse"
+              data-target="#row{{d._id}}" aria-expanded="false" aria-controls="row{{d._id}}">
+              <i class="fas fa-chevron-up" aria-hidden="true"></i>
+            </button>
+          </td>
         </tr>
         {{/each}}
 
