@@ -2,6 +2,13 @@ const router = require( 'express' ).Router();
 const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
+router.post('/api/transaction/update/:id', async (req, res) => {
+  const updated = await Transaction.findByIdAndUpdate( req.params.id, { ...req.body} ).catch(e => console.log(e));
+  // res.json( updated );
+  res.redirect(req.header('Referer'));
+
+});
+
 router.get( '/', async ( req, res ) => {
   let all = null;
 
