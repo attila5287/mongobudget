@@ -2,6 +2,12 @@ const router = require( 'express' ).Router();
 const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
+router.get('/api/transaction/delete/:id', async (req, res) => {
+  const deleted = await Transaction.findOneAndDelete( req.params.id).catch(e => console.log(e));
+  res.json( deleted );
+  // res.redirect(req.header('Referer'));
+
+});
 router.post('/api/transaction/update/:id', async (req, res) => {
   const updated = await Transaction.findByIdAndUpdate( req.params.id, { ...req.body} ).catch(e => console.log(e));
   // res.json( updated );
@@ -84,8 +90,8 @@ router.post( "/api/transaction", async ( req, res ) => {
     .catch( e => console.log( e ) );
 
   console.log( 't :>> ', t );
-  res.json( t );
-
+  // res.json( t );
+  res.redirect(req.header('Referer'));
 } );
 
 router.get( "/api/transaction", async ( req, res ) => {
@@ -95,12 +101,10 @@ router.get( "/api/transaction", async ( req, res ) => {
     } ).catch( e => console.log( e ) );
 
   res.json( mods );
-
 } );
 
 router.get( "/api/transaction/demo", async ( req, res ) => {
   res.json( demo )
-
 } );
 
 module.exports = router;

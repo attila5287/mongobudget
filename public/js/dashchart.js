@@ -35,10 +35,17 @@ function populateChart(transactions) {
       labels,
       datasets: [
         {
-          label: "Total Over Time",
           fill: true,
-          // backgroundColor: "#6666ff",
-          backgroundColor: "#62c462",
+          label: "Total Over Time",
+          pointHoverBorderWidth: 10,
+          pointHoverBorderColor: "#272b30",
+          pointHoverBackgroundColor: "#5bc0de",
+          borderColor: "#62c462",
+          pointHoverRadius: 25,
+          borderWidth: 2,
+          pointRadius: 8,
+          pointBackgroundColor: "#62c462",
+          backgroundColor: "#3a3f44",
           data
         }
       ]
