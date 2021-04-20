@@ -47,6 +47,6 @@ function populateChart(transactions) {
 }
 
 // ref: mdn docs
-fetch('/api/transaction/demo')
+fetch('/api/transaction')
   .then(response => response.json())
   .then(data => populateChart(data));
