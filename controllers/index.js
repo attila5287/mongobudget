@@ -3,7 +3,7 @@ const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
 router.get('/api/transaction/delete/:id', async (req, res) => {
-  const deleted = await Transaction.findOneAndDelete( req.params.id).catch(e => console.log(e));
+  const deleted = await Transaction.findOneAndDelete( req.params.id).j(true).catch(e => console.log(e));
   res.json( deleted );
   // res.redirect(req.header('Referer'));
 
