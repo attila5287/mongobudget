@@ -25,11 +25,13 @@ app.use( routes );
 app.engine( 'handlebars', hbs.engine );
 app.set( 'view engine', 'handlebars' );
 
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/budget", {
-    useNewUrlParser: true,  
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/budget',
+  {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
-} );
+});
 
 app.listen( PORT, () => console.log( '\n>> Now listening at PORT : ' + PORT ) );
