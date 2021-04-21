@@ -3,13 +3,15 @@ const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
 router.get('/api/transaction/delete/:id', async (req, res) => {
-  const deleted = await Transaction.findOneAndDelete( req.params.id).j(true).catch(e => console.log(e));
+  const deleted = await Transaction.findByIdAndDelete(  req.params.id  ).j( true ).catch( e => console.log( e ) );
+  
   res.json( deleted );
   // res.redirect(req.header('Referer'));
 
 });
 router.post('/api/transaction/update/:id', async (req, res) => {
-  const updated = await Transaction.findByIdAndUpdate( req.params.id, { ...req.body} ).catch(e => console.log(e));
+  const updated = await Transaction.findByIdAndUpdate( req.params.id, { ...req.body } ).catch( e => console.log( e ) );
+  
   // res.json( updated );
   res.redirect(req.header('Referer'));
 
