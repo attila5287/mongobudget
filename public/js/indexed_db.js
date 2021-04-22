@@ -29,7 +29,7 @@ function saveRecord(record) {
   // create a transaction on the pending db with readwrite access
   var trans = db.transaction("pending", "readwrite");
   // access your pending object store
-  var objectStore1 = trans.objectStore("foo")
+  var objectStore = trans.objectStore("pending")
   
   var newItem = [ { description: "budget activity", amount: 1, category: "in", } ];
   
@@ -44,7 +44,8 @@ function checkDatabase() {
   // get all records from store and set to a variable
 
   getAll.onsuccess = function () {
-    if (getAll.result.length > 0) {
+    if ( getAll.result.length > 0 ) {
+      
       fetch('/api/transaction/bulk', {
         method: 'POST',
         body: JSON.stringify(getAll.result),
