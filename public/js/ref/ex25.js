@@ -1,4 +1,4 @@
- const request = window.indexedDB.open("toDoList", 1);
+      const request = window.indexedDB.open("toDoList", 1);
 
       // Create schema
       request.onupgradeneeded = event => {
@@ -28,6 +28,14 @@
         // Opens a Cursor request and iterates over the documents.
         const getCursorRequest = toDoListStore.openCursor();
         getCursorRequest.onsuccess = e => {
-          // CODE HERE
+          const cursor = e.target.result;
+          if (cursor) {
+            if (cursor.value.status === "in-progress") {
+              const todo = cursor.value;
+              todo.status = "complete";
+              cursor.update(todo);
+            }
+            cursor.continue();
+          }
         };
       };
