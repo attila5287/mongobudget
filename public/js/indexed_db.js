@@ -27,11 +27,11 @@ request.onerror = function (event) {
 
 function saveRecord(record) {
   // create a transaction on the pending db with readwrite access
-  var trans1 = db.transaction("foo", "readwrite");
+  var trans = db.transaction("pending", "readwrite");
   // access your pending object store
-  var objectStore1 = trans1.objectStore("foo")
+  var objectStore1 = trans.objectStore("foo")
   
-  var newItem = [ { description: "budget change", amount: 1, category: "in", } ];
+  var newItem = [ { description: "budget activity", amount: 1, category: "in", } ];
   
   // add record to your store with add method.
   objectStore1.add( new_item[ 0 ] );
