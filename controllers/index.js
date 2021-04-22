@@ -2,6 +2,18 @@ const router = require( 'express' ).Router();
 const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
+router.post("/api/transaction/bulk", ({ body }, res) => {
+  Transaction.insertMany(body)
+    .then(dbTransaction => {
+      res.json(dbTransaction);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+} );
+
+
+
 router.get('/api/transaction/delete/:id', async (req, res) => {
   const deleted = await Transaction.findByIdAndDelete(  req.params.id  ).j( true ).catch( e => console.log( e ) );
   
@@ -72,7 +84,7 @@ router.get( "/api/transaction/seed", async ( req, res ) => {
   if ( existing.length ) {
     const msg = {
       status: "records exist, no seeding necessary"
-    }
+    };
     res.json( msg );
 
   } else {

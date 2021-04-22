@@ -34,7 +34,7 @@ function saveRecord(record) {
   var newItem = [ { description: "budget activity", amount: 1, category: "in", } ];
   
   // add record to your store with add method.
-  objectStore1.add( new_item[ 0 ] );
+  objectStore.add( new_item[ 0 ] );
   
 }
 
@@ -42,7 +42,8 @@ function checkDatabase() {
   // open a transaction on your pending db
   // access your pending object store
   // get all records from store and set to a variable
-
+  const db = request.result;
+  let getAll = {};
   getAll.onsuccess = function () {
     if ( getAll.result.length > 0 ) {
       
