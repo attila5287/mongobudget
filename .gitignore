@@ -105,3 +105,5 @@ dist
 public/js/ref/solved.js
 public/js/ref/index.js
 public/js/ref/app.js
+public/_ref/solved.js
+public/_ref/index.js
