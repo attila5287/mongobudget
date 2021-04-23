@@ -103,3 +103,4 @@ dist
 # TernJS port file
 .tern-port
 public/js/ref/solved.js
+public/js/ref/index.js
