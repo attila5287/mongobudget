@@ -1,6 +1,6 @@
-function populateChart(transactions) {
+const populateChart = (fetched) => {
   // copy array and reverse it
-  const reversed = transactions.slice().reverse();
+  const reversed = fetched.slice().reverse();
   let sum = 0;
 
   // create date labels for chart
@@ -19,7 +19,8 @@ function populateChart(transactions) {
       sum -= parseInt(t.amount);
     }
     return sum;
-  });
+  } );
+  
   let myChart = null;
 
   // remove old chart if it exists
@@ -52,8 +53,3 @@ function populateChart(transactions) {
     }
   });
 }
-
-// ref: mdn docs
-fetch('/api/transaction')
-  .then(response => response.json())
-  .then(data => populateChart(data));

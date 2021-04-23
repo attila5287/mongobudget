@@ -178,13 +178,17 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
-    <script src="/js/collapse.js"></script>
-    <script src="/js/dashchart.js"></script>
-    <script src="/js/indexed_db.js"></script>
-    <script src="/js/new_item.js"></script>
-    <script src="/js/table_up.js"></script>
+    <script src="/js/collapse/chart_div.js"></script>
+    <script src="/js/collapse/table_div.js"></script>
 
-
+    {{!-- first indexed_db then new_item --}}
+    <script src="/js/db/indexed_db.js"></script>
+    <script src="/js/forms/new_item.js"></script>
+    
+    {{!-- chart or table then init at last --}}
+    <script src="/js/render/chart.js"></script>
+    <script src="/js/render/table.js"></script>
+    <script src="/js/render/init.js"></script>
 
   </body>
 

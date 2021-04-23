@@ -1,4 +1,4 @@
-$( '#new_item_form' ).on( 'submit', ( event ) => {
+const  form_handler = ( event ) => {
   // does not post data to server thus no page refresh
   event.preventDefault();
   
@@ -23,4 +23,6 @@ $.ajax({
 });
 
 
-});
+}
+
+$( '#new_item_form' ).on( 'submit', form_handler);

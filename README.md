@@ -5,25 +5,25 @@ node-js app with express-js framework, mongo-db, mongoose
  Mini Project
 ===
 
-0:  *Add External JS file*
+> * 0:  *Add External JS file*
 - [x] - Implement IndexedDB so the budget tracker persists data. Write all of your IndexedDB code in `public/indexed_db.js`.
 
 <br>
 
-> 1: *Create an instance*
+> * 1: *Create an instance*
 ---
 - [x] - Create a new db request for a `budget` database.
 
 <br>
 
-> 2: request.`onupgradeneeded()`, 
+> * 2: request.`onupgradeneeded()`, 
 ---
 - [x] -  Create an object store called `pending` and set `autoIncrement` to `true`.
 
 
 <br>
 
-> 3: function *`saveRecord()`*
+> * 3: function *`saveRecord()`*
 ---
 - [x] - Create a transaction on the `pending` object store with `readwrite` access.
 
@@ -34,7 +34,7 @@ node-js app with express-js framework, mongo-db, mongoose
 
 <br>
 
-> 4: function *`checkDatabase()`*
+> * 4: function *`checkDatabase()`*
 - [ ] - Open a transaction on your `pending` object store.
 
 - [ ] - Access your `pending` object store.
@@ -43,7 +43,7 @@ node-js app with express-js framework, mongo-db, mongoose
 
 <br>
 
-> 5: `getAll.onsuccess()`
+> * 5: `getAll.onsuccess()`
 ---
 - [ ] - If successful, open a transaction on your `pending` object store.
 - [ ] - Access your `pending` object store.
@@ -51,6 +51,6 @@ node-js app with express-js framework, mongo-db, mongoose
 
 <br>
 
-> 6: *Bonus*
+> * 6: *Bonus*
 ---
 - [ ] - Create a button that resets all funds to zero in your indexedDB.
