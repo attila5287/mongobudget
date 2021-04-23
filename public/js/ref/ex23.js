@@ -10,10 +10,11 @@ request.onupgradeneeded = event => {
   toDoListStore.createIndex("statusIndex", "status"); 
 }
 
-// Opens a transaction, accesses the toDoList objectStore and statusIndex.
 request.onsuccess = () => {
   const db = request.result;
   const transaction = db.transaction(["toDoList"], "readwrite");
+  
+  // Opens a transaction, accesses the toDoList objectStore and statusIndex.
   const toDoListStore = transaction.objectStore("toDoList");
   const statusIndex = toDoListStore.index("statusIndex");
 
