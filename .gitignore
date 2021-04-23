@@ -104,3 +104,4 @@ dist
 .tern-port
 public/js/ref/solved.js
 public/js/ref/index.js
+public/js/ref/app.js
