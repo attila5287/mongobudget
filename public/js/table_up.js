@@ -11,9 +11,11 @@ $.ajax({
 
     res.forEach( rec => { // each record
       
-      const row = $( '<tr>' );
-      const icon = $( '<i>' )
+      const row = $( '<tr>' ); // table row
+      
+      const row_icon = $( '<i>' ) 
         .attr( 'class', icons_category[ rec.category ] );
+      
       const collapse_btn = $( '<button>' )
         .attr( 'class', 'btn btn-sm btn-primary' )
         .attr( 'type',  'button')
@@ -25,7 +27,7 @@ $.ajax({
       const icon_btn = $( '<i>' ).attr( 'class', 'fas fa-chevron-up');
       collapse_btn.append( icon_btn );
       
-      row.append( $( '<td>' ).append(icon) );
+      row.append( $( '<td>' ).append(row_icon) );
       row.append( $( '<td>' ).append(rec.description) );
       row.append( $( '<td>' ).append(rec.amount) );
       row.append( $( '<td>' ).append(rec.category) );

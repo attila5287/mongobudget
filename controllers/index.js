@@ -33,10 +33,6 @@ router.post('/api/transaction/update/:id', async (req, res) => {
 router.get( '/', async ( req, res ) => {
   let all = null;
 
-  const icons = {
-    in: 'arrow-up text-success',
-    out: 'arrow-down text-danger'
-  };
   const mods = await Transaction
     .find( {} )
     .sort( {
@@ -48,14 +44,12 @@ router.get( '/', async ( req, res ) => {
       all = mods.map( ( d ) => {
         return {
           ...d.toJSON(),
-          icon: icons[ d.category ]
         }
       } );
     } else {
       all = demo.map( ( d ) => {
         return {
           ...d,
-          icon: icons[ d.category ]
         }
       } );
     }
@@ -66,7 +60,6 @@ router.get( '/', async ( req, res ) => {
     all = demo.map( ( d ) => {
       return {
         ...d,
-        icon: icons[ d.category ]
       }
     } );
   }
@@ -74,7 +67,6 @@ router.get( '/', async ( req, res ) => {
 
   res.render( 'dashboard', {
     data: all,
-    icons: icons
   } );
 } );
 

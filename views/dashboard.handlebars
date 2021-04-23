@@ -70,24 +70,6 @@
         </tr>
       </thead>
       <tbody id="table_body">
-        {{#each data as |d|}}
-        <tr>
-          <td class="text-success text-lg my-0 py-1">
-            <i class="fas fa-{{ d.icon }}"></i>
-          </td>
-          <td>{{ d.description}} </td>
-          <td class="font-weight-bold">{{format_amount d.amount}} </td>
-          <td>{{ d.category}} </td>
-          <td>{{format_date d.date}} </td>
-          <td>
-            <button class="btn btn-primary btn-sm my-0" type="button" data-toggle="collapse"
-              data-target="#row{{d._id}}" aria-expanded="false" aria-controls="row{{d._id}}">
-              <i class="fas fa-chevron-up" aria-hidden="true"></i>
-            </button>
-          </td>
-        </tr>
-        {{/each}}
-
       </tbody>
     </table>
   </div>
