@@ -29,12 +29,12 @@ function saveRecord(record) {
   // create a transaction on the pending db with readwrite access
   var trans = db.transaction("pending", "readwrite");
   // access your pending object store
-  var objectStore = trans.objectStore("pending")
+  var objectStore = trans.objectStore( "pending" );
   
-  var newItem = [ { description: "budget activity", amount: 1, category: "in", } ];
+  var demo =  { description: "budget activity", amount: 1, category: "in", } ;
   
   // add record to your store with add method.
-  objectStore.add( new_item[ 0 ] );
+  objectStore.add( demo );
   
 }
 
