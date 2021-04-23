@@ -27,12 +27,12 @@
 
   <body class="my-5 py-5 my-sm-0 py-sm-0">
     
-    <form action="/api/transaction" method="post">
+    <form  id="new_item_form" action="/api/transaction" method="post">
       <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="http://mongobudget.herokuapp.com">
-          <span class="text-success text-reg mr-0 text-ubu text-sm">
+          <span class="text-secondary text-reg mr-0 text-ubu text-lg">
             Mongo
-            <span class="shadow-lg text-dark font-weight-bold bg-success p-1 px-0 rounded-xl">Budget</span>
+            <span class="shadow-lg text-dark font-weight-bold bg-success px-1 py-0 rounded-xl">Budget</span>
             <span class="text-success">Tracker</span>
           </span>
           <img src="https://raw.githubusercontent.com/attila5287/mongobudget/main/budget.png"
@@ -45,13 +45,13 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         
-        <input class="form-control form-control-dark text-xl w-100 ml-1" name="description" type="text"
+        <input class="form-control form-control-dark text-xl w-100 ml-1" id="description" name="description" type="text"
           placeholder="Description">
         
-        <input class="form-control form-control-dark text-xl w-100 ml-1" name="amount" type="text"
+        <input class="form-control form-control-dark text-xl w-100 ml-1" id="amount" name="amount" type="text"
           placeholder="Amount">
 
-        <select class="custom-select custom-select-lg form-control form-control-dark text-xl text-secondary ml-1" name="category">
+        <select class="custom-select custom-select-lg form-control form-control-dark text-xl text-secondary ml-1" name="category" id="category">
           <option selected hidden> Category </option>
           <option>in</option>
           <option>out</option>

@@ -120,7 +120,7 @@ $(document).on("click", "#updater", function() {
       $("#title").val("");
       // Revert action button to submit
       $("#action-button").html("<button id='make-new'>Submit</button>");
-      // Grab the results from the db again, to populate the DOM
+      // Grab the results from the db again, to populate the DOM 
       getResults();
     }
   });
