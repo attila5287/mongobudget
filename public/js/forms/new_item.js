@@ -10,6 +10,7 @@ const  form_handler = ( event ) => {
     category: $( '#category' ).val(),
     date: Date.now(),
   };
+  // saveRecord( form_data );
 console.log('form_data :>> ', form_data);
 $.ajax({
   type: "POST",
@@ -18,6 +19,7 @@ $.ajax({
   dataType: "JSON",
   success: function ( response ) {
     console.log('data :>> ', response);
+    init();
     
   }
 });

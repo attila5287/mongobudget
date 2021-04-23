@@ -1,18 +1,28 @@
-const render = () => {
-  
-  $.ajax( {
-    type: "GET",
-    url: "/api/transaction",
-    dataType: "JSON",
-    success: ( response ) => {
-      console.log( `:>> Total of ${response.length} items fetched from database for table and chart` );
+let all;
 
-      table_update( response );
-      populateChart( response );
+async function fetch_api () {
+    let result;
+
+    try {
+        result = await fetch(
+        '/api/transaction',
+        );
+
+      return result.json();
+      
+    } catch (error) {
+        console.error(error);
     }
-  } );
 }
 
-render();
+const init = async () => {
+  all = await fetch_api();
+  
+  table_update( all );
+  populateChart( all );
+  
+};
+
+init();
 
 

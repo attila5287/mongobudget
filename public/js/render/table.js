@@ -1,4 +1,7 @@
-const  table_update =  (data) => {
+const table_update = ( data ) => {
+  $( '#table_body' ).empty();
+  
+  
   const icons_category = {
     in: 'fas fa-arrow-up text-success',
     out: 'fas fa-arrow-down text-danger',

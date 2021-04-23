@@ -97,8 +97,8 @@ router.post( "/api/transaction", async ( req, res ) => {
     .catch( e => console.log( e ) );
 
   console.log( 't :>> ', t );
-  // res.json( t );
-  res.redirect(req.header('Referer'));
+  res.json( t );
+  // res.redirect(req.header('Referer'));
 } );
 
 router.get( "/api/transaction", async ( req, res ) => {
