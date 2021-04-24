@@ -2,7 +2,7 @@ const  form_handler = ( event ) => {
   // does not post data to server thus no page refresh
   event.preventDefault();
   
-  console.log( 'test submit' );
+  // console.log( 'test submit' );
   
   const form_data = {
     description: $( '#description' ).val(),
@@ -10,15 +10,18 @@ const  form_handler = ( event ) => {
     category: $( '#category' ).val(),
     date: Date.now(),
   };
-  // saveRecord( form_data );
-console.log('form_data :>> ', form_data);
-$.ajax({
+  console.log(':>> save record function called from idxDB');
+  saveRecord( form_data );
+
+  // console.log('form_data :>> ', form_data);
+
+  $.ajax( {
   type: "POST",
   url: "/api/transaction",
   data: form_data,
   dataType: "JSON",
   success: function ( response ) {
-    console.log('data :>> ', response);
+    // console.log('data :>> ', response);
     render();
 
   }

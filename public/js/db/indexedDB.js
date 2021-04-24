@@ -19,7 +19,8 @@ request.onsuccess = function ( event ) {
   console.log(':>> indexedDB request success');
   db = event.target.result;
   
-  if (navigator.onLine) {
+  if ( navigator.onLine ) {
+    console.log(':>> indexedDB online sends records');
     checkDatabase();
   }
 };
@@ -35,10 +36,6 @@ request.onerror = function (event) {
 
 function saveRecord ( record ) {// ex22
   console.log( ':>> indexedDB saving record' );
-  
-  db.createObjectStore( "pending", {
-    autoIncrement: true
-  } );
   // create a transaction on the pending db with readwrite access
   const transaction = db.transaction( [ 'pending' ], "readwrite" );
   
@@ -50,7 +47,7 @@ function saveRecord ( record ) {// ex22
 }
 
 function checkDatabase() {
-  console.log( ':>> indexedDB check for pending transactions' );
+  console.log( ':>> indexedDB check database for pending' );
   // open a transaction on your pending db
   const transaction = db.transaction( [ 'pending' ], "readwrite" );
   
@@ -59,7 +56,7 @@ function checkDatabase() {
 
   // get all records from store and set to a variable
   const getAll = obj_store.getAll();
-  console.log(':>> indexedDB get all pending records',getAll);
+  console.log(':>> indexedDB get all pending',getAll);
   getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
       fetch('/api/transaction/bulk', {
@@ -76,6 +73,8 @@ function checkDatabase() {
           // access your pending object store
           // clear all items in your store
         });
+    } else {
+      console.log(':>> indexedDB no pending records');
     }
   };
 }
