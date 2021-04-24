@@ -19,8 +19,8 @@ $.ajax({
   dataType: "JSON",
   success: function ( response ) {
     console.log('data :>> ', response);
-    init();
-    
+    render();
+
   }
 });
 

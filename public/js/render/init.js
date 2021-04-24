@@ -15,7 +15,7 @@ async function fetch_api () {
     }
 }
 
-const init = async () => {
+const render = async () => {
   all = await fetch_api();
   
   table_update( all );
@@ -23,6 +23,6 @@ const init = async () => {
   
 };
 
-init();
+render();
 
 

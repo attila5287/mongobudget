@@ -2,8 +2,8 @@ const router = require( 'express' ).Router();
 const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
-router.post("/api/transaction/bulk", ({ body }, res) => {
-  Transaction.insertMany(body)
+router.post("/api/transaction/bulk", ( req, res) => {
+  Transaction.insertMany(req.body)
     .then(dbTransaction => {
       res.json(dbTransaction);
     })
