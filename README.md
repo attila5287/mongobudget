@@ -35,18 +35,18 @@ node-js app with express-js framework, mongo-db, mongoose that collects user inp
 <br>
 
 >  4: function *`checkDatabase()`*
-- [ ] - Open a transaction on your `pending` object store.
+- [x] - Open a transaction on your `pending` object store.
 
-- [ ] - Access your `pending` object store.
+- [x] - Access your `pending` object store.
 
-- [ ] - **Get all records** (*getAll*) from store and set to a variable.
+- [x] - **Get all records** (*getAll*) from store and set to a variable.
 
 <br>
 
 >  5: `getAll.onsuccess()`
 ---
-- [ ] - If successful, open a transaction on your `pending` object store.
-- [ ] - Access your `pending` object store.
+- [x] - If successful, open a transaction on your `pending` object store.
+- [x] - Access your `pending` object store.
 - [ ] - Clear all items in your store.
 
 <br>
