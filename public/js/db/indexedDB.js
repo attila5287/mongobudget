@@ -78,8 +78,8 @@ function checkDatabase() {
           const existing_store = transaction.objectStore('pending');
           
             // Clear existing entries because our bulk add was successful
-            existing_store.clear();
             console.log(':>> indexedDB online, submitted records, learing store');
+            existing_store.clear();
         });
     } else {
       console.log(':>> indexedDB no pending records');
