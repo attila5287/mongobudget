@@ -122,7 +122,7 @@ router.post( "/api/transaction", async ( req, res ) => {
     
   } else {
     res.status( 400 );
-    res.status( 400 ).json( { status: 'duplicate record' } );
+    // res.status( 400 ).json( { status: 'duplicate record' } );
     // res.redirect(req.header('Referer'));
     
   }
