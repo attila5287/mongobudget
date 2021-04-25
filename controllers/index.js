@@ -3,13 +3,20 @@ const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
 router.post("/api/transaction/bulk", ( req, res) => {
-
   console.log( 'req.body :>> ', req.body );
   
-
-  Transaction.insertMany(req.body)
-    .then(dbTransaction => {
-      res.json(dbTransaction);
+  const str = req.body.map( rec => { return JSON.stringify( { description: rec.description, amount: rec.amount, category: rec.category } ) } );
+  console.log( 'str :>> ', str );
+  
+  const set = new Set( str );
+  console.log('set :>> ', set);
+  
+  const unq = Array.from( set ).map( r => JSON.parse( r ) );
+  
+  
+  Transaction.insertMany(unq)
+    .then(inserted => {
+      res.json(inserted);
     })
     .catch(err => {
       res.status(400).json(err);

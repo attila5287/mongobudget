@@ -24,7 +24,7 @@ const  form_handler = ( event ) => {
     // console.log('data :>> ', response);
     render();
 
-    }
+  }
 });
 
 
