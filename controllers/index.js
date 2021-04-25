@@ -112,21 +112,20 @@ router.post( "/api/transaction", async ( req, res ) => {
   const duplicate = ( same_desc && same_amount && same_cat );
   
   if ( !duplicate ) {
+    
     const new_item = await Transaction
       .create( req.body )
       .catch( e => console.log( e ) );
+  
     // console.log( 'new_item :>> ', new_item );
     // res.json( {} );
     res.json( new_item );
-    // res.status( 200 );
     
   } else {
-    res.status( 400 );
-    // res.status( 400 ).json( { status: 'duplicate record' } );
-    // res.redirect(req.header('Referer'));
-    
+    res.status(400).json({status : 'duplicate record'});    
   }
 
+  // res.redirect(req.header('Referer'));
 } );
 
 router.get( "/api/transaction", async ( req, res ) => {
