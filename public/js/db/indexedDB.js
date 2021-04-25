@@ -4,7 +4,8 @@ let version_no = 21;
 // todo1
 const request = indexedDB.open( 'budget_db', version_no );
 // todo2 ex19
-request.onupgradeneeded = function (event) {
+let msg = document.getElementById('indexedDB_msg');
+request.onupgradeneeded = function ( event ) {
   console.log(':>> indexedDB version needs upgrade');
   // create object store called "BudgetStore" and set autoIncrement to true
   db = event.target.result;
@@ -20,7 +21,8 @@ request.onsuccess = function ( event ) {
   db = event.target.result;
   
   if ( navigator.onLine ) {
-    console.log(':>> indexedDB online sends records');
+    console.log( ':>> indexedDB online sends records' );
+    msg.innerText = 'App online'
     checkDatabase();
   }
 };
@@ -30,12 +32,13 @@ request.onerror = function (event) {
   // log error here
   console.log( 'error :>> ', event.target.errorCode );
   
-  document.getElementById( 'indexedDB_error' ).innerText( event.target.errorCode );
+  document.getElementById( 'indexedDB_error' ).innerText =  event.target.errorCode ;
 
 };
 
 function saveRecord ( record ) {// ex22
   console.log( ':>> indexedDB saving record' );
+
   // create a transaction on the pending db with readwrite access
   const transaction = db.transaction( [ 'pending' ], "readwrite" );
   
@@ -43,7 +46,13 @@ function saveRecord ( record ) {// ex22
   const obj_store = transaction.objectStore('pending');
   
   // add record to your store with add method.
-  obj_store.add(record);
+  obj_store.add( record );
+  
+  if ( !navigator.onLine ) {
+
+    msg.innerText = 'No internet connection, record saved as pending and will be submitted when online' ;
+
+  }
 }
 
 function checkDatabase() {
@@ -78,7 +87,7 @@ function checkDatabase() {
           const existing_store = transaction.objectStore('pending');
           
             // Clear existing entries because our bulk add was successful
-            console.log(':>> indexedDB online, submitted records, learing store');
+            console.log(':>> indexedDB online, submitted records, pending records cleared');
             existing_store.clear();
         });
     } else {
