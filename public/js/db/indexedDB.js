@@ -24,6 +24,9 @@ request.onsuccess = function ( event ) {
     console.log( ':>> indexedDB online sends records' );
     msg.innerText = 'App online'
     checkDatabase();
+  } else {
+    msg.innerText = 'App offline'
+
   }
 };
 
@@ -86,9 +89,9 @@ function checkDatabase() {
           // access your pending object store
           const existing_store = transaction.objectStore('pending');
           
-            // Clear existing entries because our bulk add was successful
-            console.log(':>> indexedDB online, submitted records, pending records cleared');
-            existing_store.clear();
+          // Clear existing entries because our bulk add was successful
+          console.log(':>> indexedDB online, submitted records, pending records cleared');
+          existing_store.clear();
         });
     } else {
       console.log(':>> indexedDB no pending records');
