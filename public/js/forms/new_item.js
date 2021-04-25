@@ -1,4 +1,4 @@
-const  form_handler = ( event ) => {
+const  form_handler = async ( event ) => {
   // does not post data to server thus no page refresh
   event.preventDefault();
   
@@ -10,22 +10,28 @@ const  form_handler = ( event ) => {
     category: $( '#category' ).val(),
     date: Date.now(),
   };
-  console.log(':>> save record function called from idxDB');
+  console.log('form_data :>> ', form_data);
   saveRecord( form_data );
-
-  // console.log('form_data :>> ', form_data);
-
-  $.ajax( {
-  type: "POST",
-  url: "/api/transaction",
-  data: form_data,
-  dataType: "JSON",
-  success: function ( response ) {
-    // console.log('data :>> ', response);
+  
+  const response = await fetch('/api/transaction', {
+    method: 'POST',
+    body: JSON.stringify(form_data),
+    headers: { 'Content-Type': 'application/json' },
+  } );
+  
+  if ( response.ok ) {
+    // alert( ':>> record posted to server' );
     render();
 
+    // document.location.replace('/');
+    
+    
+  } else {
+    alert( 'ERROR: DUPLICATE RECORDS' );
+
+    
   }
-});
+
 
 
 }

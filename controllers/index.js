@@ -13,7 +13,6 @@ router.post("/api/transaction/bulk", ( req, res) => {
   
   const unq = Array.from( set ).map( r => JSON.parse( r ) );
   
-  
   Transaction.insertMany(unq)
     .then(inserted => {
       res.json(inserted);
@@ -102,16 +101,10 @@ router.get( "/api/transaction/seed", async ( req, res ) => {
 
 
 router.post( "/api/transaction", async ( req, res ) => {
+  // console.log('req.body :>> ', req.body);
   
-  console.log('req.body :>> ', req.body);
-  
-  const latest = await Transaction
-    .findOne( {} )
-    .sort( { '_id': -1 }  )
-    .limit(1)
-    .catch( e => console.log( e ) );
-  
-  console.log( 'latest :>> ', latest );
+  const latest = await Transaction.findOne( {} ).sort( { '_id': -1 }  ).limit(1).catch( e => console.log( e ) );
+  // console.log( 'latest :>> ', latest );
 
   const same_desc = req.body.description == latest.description;
   const same_amount = req.body.amount == latest.amount;
@@ -119,28 +112,22 @@ router.post( "/api/transaction", async ( req, res ) => {
   const duplicate = ( same_desc && same_amount && same_cat );
   
   if ( !duplicate ) {
-    
     const new_item = await Transaction
       .create( req.body )
       .catch( e => console.log( e ) );
-  
-    console.log( 'new_item :>> ', new_item );
+    // console.log( 'new_item :>> ', new_item );
     // res.json( {} );
     res.json( new_item );
+    // res.status( 200 );
     
   } else {
-    res.status(400).json({status : 'duplicate record'});    
-    // res.redirect( '/dup/rec/err' );
+    res.status( 400 );
+    res.status( 400 ).json( { status: 'duplicate record' } );
+    // res.redirect(req.header('Referer'));
+    
   }
 
-  // res.redirect(req.header('Referer'));
 } );
-router.get('/dup/rec/err', (req, res) => {
-  const msg = {
-    error : 'duplicate record'
-  }
-  res.json( msg );
-});
 
 router.get( "/api/transaction", async ( req, res ) => {
   const mods = await Transaction.find( {} )
