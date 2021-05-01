@@ -2,6 +2,11 @@ const router = require( 'express' ).Router();
 const Transaction = require( "../models/Transaction" );
 const demo = require( '../demo' );
 
+router.get( "/api/transaction/demo", async ( req, res ) => {
+  res.json( demo )
+} );
+
+
 router.post("/api/transaction/bulk", ( req, res) => {
   console.log( 'req.body :>> ', req.body );
   
@@ -135,10 +140,6 @@ router.get( "/api/transaction", async ( req, res ) => {
     } ).catch( e => console.log( e ) );
 
   res.json( mods );
-} );
-
-router.get( "/api/transaction/demo", async ( req, res ) => {
-  res.json( demo )
 } );
 
 module.exports = router;
