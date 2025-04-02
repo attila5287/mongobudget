@@ -27,12 +27,15 @@ app.engine( 'handlebars', hbs.engine );
 app.set( 'view engine', 'handlebars' );
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/budget_loc',
+  process.env.MONGODB_URI ||
+    "mongodb+srv://attila:test1234@cluster0.easfpnj.mongodb.net/Cluster0?retryWrites=true&w=majority&appName=Cluster0",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
-});
+  }
+);
+
 
 app.listen( PORT, () => console.log( '\n>> Now listening at PORT : ' + PORT ) );
